@@ -1,0 +1,364 @@
+*, body, html{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+button {
+    outline: none;
+}
+
+.btns {
+    position: absolute;
+    left: 0;
+    right: 0;
+    text-align: center;
+    padding: 0.3rem
+}
+
+.bottom-btns {
+  position: fixed;
+  right: 0.5rem;
+  bottom: 1.7rem;
+  text-align: center;
+
+}
+
+.home-btns {
+  text-decoration: none;
+  padding: 0.75rem 0.5rem;
+  background-color: #640032;
+  border: #640032;
+  color: white;
+  cursor: pointer;
+  display: inline-block;
+  width: 10rem;
+  border-radius: 10px;
+  margin: 0.2rem;
+  
+}
+
+.home-fixed-btns {
+    text-decoration: none;
+    padding: 0.5rem;
+    background-color: #640032;
+    border: #640032;
+    color: white;
+    cursor: pointer;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+    display: inline-block;
+    width: 4rem;
+    height: 4rem;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.50);
+    
+}
+
+.home-btns:hover, .home-fixed-btns:hover {
+    background-color: #8d2c5c;
+}
+.home-btns:disabled, .home-fixed-btns:disabled {
+    background-color: grey;
+    cursor: not-allowed;
+}
+
+.flat {
+    background-color: transparent;
+    color: #3a0061;
+    border: none;
+    padding: 0.75ren 1.5rem;
+    cursor: pointer;
+    margin-top: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+}
+
+.flat:hover {
+    background-color: #edd2ff;
+}
+
+.fadeIn {
+    transition: 5s all ease-in;
+}
+
+header{
+    width: 100%;
+    height: 5rem;
+    background-color: #640032;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header div {
+    text-align: center;
+}
+
+header p {
+    color: white;
+    margin: 0;
+    display: inline-block;
+    font-size: 4rem;
+    padding-right: 0.5rem;
+}
+
+#warz-S-1, #warz-A-3, #warz-W-6, #warz-R-8 {
+    transform: rotate(-20deg);
+}
+
+#warz-T-2, #warz-R-4, #warz-A-7, #warz-Z-9 {
+    transform: rotate(20deg);
+}
+
+
+#cards-wrapper {
+    display: flex;
+    padding: 1.5rem;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    margin: 3rem 1rem  ;
+}
+
+
+/* #section3 {
+  position: relative;
+} */
+
+.picture-card {
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    padding: 1rem;
+    height: 15rem;
+    width: 20rem;
+    margin: 0.5rem;
+    color:#640032
+}
+
+.picture-card:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.26);
+    background-color: #eedce5;
+    cursor: pointer;
+}
+.header {
+    text-align: center;
+}
+.header img {
+    width: 10rem;
+    height: 10rem;
+}
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.15);
+    z-index: 10;
+}
+dialog {
+    position: fixed;
+    top: 20vh;
+    left: 10%;
+    width: 80%;
+    z-index: 1000;
+    border-radius: 12px;
+    border: none;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.26);
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    background-color: #f7e7e7;
+    animation: dialog-open .3s ease-in;
+}
+
+.dialog--close {
+  animation: dialog-close .5s ease-out;
+}
+
+dialog.dialog-unscale {
+    visibility: hidden;
+    transform: scale(0.1);
+    transition: transform 200ms;
+}
+dialog.dialog-scale {
+    visibility: visible;
+    transform: scale(1);
+}
+.dialog-body {
+    padding: 1rem;
+    text-align: center;
+    margin-top: 3rem;
+}
+.dialog-header {
+    text-align: center;
+    height: 15rem;
+}
+.dialog-menu {
+    padding: 1rem;
+    display: flex;
+    justify-content: flex-end;
+    margin: 0;
+}
+
+
+footer{
+    width: 100%;
+    height: 1.5rem;
+    background-color: #640032;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    color: white;
+}
+
+.spinner {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    margin: 150px auto;
+  }
+  
+  .lds-roller {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+  }
+  .lds-roller div {
+    animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    transform-origin: 40px 40px;
+  }
+  .lds-roller div:after {
+    content: " ";
+    display: block;
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #640032;
+    margin: -4px 0 0 -4px;
+  }
+  .lds-roller div:nth-child(1) {
+    animation-delay: -0.036s;
+  }
+  .lds-roller div:nth-child(1):after {
+    top: 63px;
+    left: 63px;
+  }
+  .lds-roller div:nth-child(2) {
+    animation-delay: -0.072s;
+  }
+  .lds-roller div:nth-child(2):after {
+    top: 68px;
+    left: 56px;
+  }
+  .lds-roller div:nth-child(3) {
+    animation-delay: -0.108s;
+  }
+  .lds-roller div:nth-child(3):after {
+    top: 71px;
+    left: 48px;
+  }
+  .lds-roller div:nth-child(4) {
+    animation-delay: -0.144s;
+  }
+  .lds-roller div:nth-child(4):after {
+    top: 72px;
+    left: 40px;
+  }
+  .lds-roller div:nth-child(5) {
+    animation-delay: -0.18s;
+  }
+  .lds-roller div:nth-child(5):after {
+    top: 71px;
+    left: 32px;
+  }
+  .lds-roller div:nth-child(6) {
+    animation-delay: -0.216s;
+  }
+  .lds-roller div:nth-child(6):after {
+    top: 68px;
+    left: 24px;
+  }
+  .lds-roller div:nth-child(7) {
+    animation-delay: -0.252s;
+  }
+  .lds-roller div:nth-child(7):after {
+    top: 63px;
+    left: 17px;
+  }
+  .lds-roller div:nth-child(8) {
+    animation-delay: -0.288s;
+  }
+  .lds-roller div:nth-child(8):after {
+    top: 56px;
+    left: 12px;
+  }
+  @keyframes lds-roller {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes dialog-open {
+    from {
+      transform: scale(0.1);
+    }
+
+    to {
+      transform: scale(1);
+    }
+  }
+
+  @keyframes dialog-close {
+    from {
+      transform: scale(1);
+    }
+
+    to {
+      transform: scale(0.1);
+    }
+  }
+/******************************* MEDIA QUERIES ***************************** */
+@media (max-width: 1091px) {
+    #cards-wrapper {
+        justify-content: center;
+    }
+}
+
+@media (min-width: 768px) {
+  dialog {
+      left: calc(50% - 20rem);
+      width: 40rem;
+  }
+}
+
+@media (max-width: 768px) {
+    header p {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 320px) {
+
+  .dialog-header {
+    height: 10rem;
+  }
+
+  .home-btns {
+    width: 7rem;
+  }
+  
+  .dialog-header img {
+    width: 10rem;
+    height: 10rem;
+  }
+}
+
