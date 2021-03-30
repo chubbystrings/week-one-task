@@ -195,6 +195,11 @@ dialog.dialog-scale {
     text-align: center;
     height: 15rem;
 }
+.dialog-header img {
+  height: 15rem;
+  width: 15rem;
+  border-radius: 50%;
+}
 .dialog-menu {
     padding: 1rem;
     display: flex;

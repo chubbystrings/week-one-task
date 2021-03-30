@@ -2,6 +2,7 @@ import { getStarWarzCharacter } from './services/starWarz.js'
 import { cards } from './helper/cards.js'
 import { createMainElements } from './helper/createMainElements.js'
 import { createButtons } from './helper/createButtons.js'
+import { showErrorModal } from './helper/error.js'
 
 
 
@@ -34,40 +35,58 @@ spinner.style.color = '#640032'
 
 let next = ''
 let previous = ''
+let initialData = null
 
-const data = await getStarWarzCharacter(url)
-next = data.next
-previous = data.previous
-const { results } = data
-cards(results, reshuffle, alphabetic)
-spinner.style.display = 'none'
-if(!previous) { previousBtn.setAttribute('disabled', 'disabled')}
+try {
+    initialData = await getStarWarzCharacter(url)
+    if (initialData) {
 
-reshuffleBtn.addEventListener('click', () => {
-    reshuffle = true
-    alphabeticalOrder = false
-    alphabeticBtn.removeAttribute('disabled')
-    cards(results, reshuffle, alphabeticalOrder)
-    reshuffleBtn.setAttribute('disabled', 'disabled')
-})
+        next = initialData.next 
+        previous = initialData.previous
+        const { results } = initialData
+        cards(results, reshuffle, alphabetic)
+        spinner.style.display = 'none'
+        if(!previous) { previousBtn.setAttribute('disabled', 'disabled')}
 
-alphabeticBtn.addEventListener('click', () => {
-    reshuffle = false
-    alphabeticalOrder = true
-    reshuffleBtn.removeAttribute('disabled')
-    cards(results, reshuffle, alphabeticalOrder)
-    alphabeticBtn.setAttribute('disabled', 'disabled')
-})
+        reshuffleBtn.addEventListener('click', () => {
+            reshuffle = true
+            alphabeticalOrder = false
+            alphabeticBtn.removeAttribute('disabled')
+            cards(results, reshuffle, alphabeticalOrder)
+            reshuffleBtn.setAttribute('disabled', 'disabled')
+        })
+
+        alphabeticBtn.addEventListener('click', () => {
+            reshuffle = false
+            alphabeticalOrder = true
+            reshuffleBtn.removeAttribute('disabled')
+            cards(results, reshuffle, alphabeticalOrder)
+            alphabeticBtn.setAttribute('disabled', 'disabled')
+        })
+
+    }
+} catch {
+    const errorMsg = 'An error occurred please refresh page'
+    showErrorModal(errorMsg)
+    
+}
 
 nextBtn.addEventListener('click', async () => {
     reshuffle = false
     alphabeticalOrder = true
-    const newData = await getStarWarzCharacter(next)
-    next = newData.next
-    previous = newData.previous
-    cards(newData.results, reshuffle, alphabeticalOrder)
-    previousBtn.removeAttribute('disabled')
-    if (!next) { nextBtn.setAttribute('disabled', 'disabled')}
+    try {
+        const newData = await getStarWarzCharacter(next)
+        if (newData) {
+            next = newData.next
+            previous = newData.previous
+            cards(newData.results, reshuffle, alphabeticalOrder)
+            previousBtn.removeAttribute('disabled')
+            if (!next) { nextBtn.setAttribute('disabled', 'disabled')}
+        }
+    } catch  {
+        const errorMsg = 'An error occurred please refresh page'
+        showErrorModal(errorMsg)
+    }
 
 })
 
@@ -75,12 +94,21 @@ nextBtn.addEventListener('click', async () => {
 previousBtn.addEventListener('click', async () => {
     reshuffle = false
     alphabeticalOrder = true
-    const newData = await getStarWarzCharacter(previous)
-    next = newData.next
-    previous = newData.previous
-    cards(newData.results, reshuffle, alphabeticalOrder)
-    nextBtn.removeAttribute('disabled')
-    if(!previous) { previousBtn.setAttribute('disabled', 'disabled')}
+    try {
+        const newData = await getStarWarzCharacter(previous)
+        if (newData) {
+            next = newData.next
+            previous = newData.previous
+            cards(newData.results, reshuffle, alphabeticalOrder)
+            nextBtn.removeAttribute('disabled')
+            if(!previous) { 
+                previousBtn.setAttribute('disabled', 'disabled')
+            }
+        }
+    } catch {
+        const errorMsg = 'An error occurred please refresh page'
+        showErrorModal(errorMsg)
+    }
 })
 
 

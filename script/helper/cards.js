@@ -23,7 +23,8 @@ export function cards(results, reshuffle, alphabetical){
                 imageSrc
             }
 
-            const { dialog, button } = createDialog(data)
+            const type = 'info'
+            const { dialog, button } = createDialog(data, type)
 
             const backdrop = document.createElement('div')
             backdrop.classList.add('overlay')
